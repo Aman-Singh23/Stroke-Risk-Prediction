@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Tailwind CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Stroke Prediction</title>
+</head>
+
+<body>
+
+    <!-- Alert Warning -->
+    <div class="alert alert-warning alert-dismissible fade show text-center mb-0" role="alert">
+        <strong>Welcome to Stroke Prediction Model</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-warning" href="/">Stroke Prediction</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/analysis">Analysis</a>
+                    </li>
+                    
+
+
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel Image (Sliding Images) -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../static/img/image3.jpg" width="1600" height="600" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5> Stroke Prediction </h5>
+              <p>According to the World Health Organization (WHO) stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../static/img/image2.jpg" width="1600" height="600" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Brain Stroke</h5>
+              <p>“If you get tired, learn to rest, not quit.”</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../static/img/image1.jpg" width="1600" height="600" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Brain Stroke</h5>
+              <p>“Start thinking wellness, not illness” – Kate Allatt, Stroke Survivor.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    
+    <!-- Form -->
+    <div class="container">
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h6 class="display-4 fw-normal">Enter Patient Details To Predict Stroke</h6>
+            <p class="fs-5 text-muted">A stroke occurs when the blood supply to part of your brain is interrupted or reduced, preventing brain tissue from getting oxygen and nutrients. Brain cells begin to die in minutes. A stroke is a medical emergency, and prompt treatment is crucial.</p>
+            <p class="text-info">
+              <b>{{prediction_text}}</b>
+            </p>
+          </div>
+
+        <div class="container">
+
+            <form action="/" method="POST">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">  Patient Age  </label>
+                  <input type="text" class="form-control" id="age" name="age" placeholder=" Enter Age ">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Gender  </label>
+                    <select class="form-select" id="gender" name="gender" aria-label="Default select example">
+                        <option selected>  Select Gender  </option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Hypertension  </label>
+                    <select class="form-select" id="hypertension" name="hypertension" aria-label="Default select example">
+                        <option selected>  Select Hypertension  </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Heart Disease  </label>
+                    <select class="form-select" id="disease" name="disease" aria-label="Default select example">
+                        <option selected>  Select Heart Disease  </option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Marrital Status  </label>
+                    <select class="form-select" id="married" name="married" aria-label="Default select example">
+                        <option selected>  Select Marrital Status  </option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Work Type  </label>
+                    <select class="form-select" id="work" name="work" aria-label="Default select example">
+                        <option selected>  Select Work Type  </option>
+                        <option value="Self-employed">Self-employed</option>
+                        <option value="Private">Private</option>
+                        <option value="children">Children</option>
+                        <option value="Govt_job">Government Job</option>
+                        <option value="Never_worked">Never Worked</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Residence Type  </label>
+                    <select class="form-select" id="residence" name="residence" aria-label="Default select example">
+                        <option selected>  Select Residence Type  </option>
+                        <option value="Urban">Urban</option>
+                        <option value="Rural">Rural</option>
+                      </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Glucose Level  </label>
+                    <input type="text" class="form-control" id="glucose" name="glucose" placeholder=" Enter Average Glucose Level ">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Body Mass Index (BMI)  </label>
+                    <input type="text" class="form-control" id="bmi" name="bmi" placeholder=" Enter BMI ">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">  Smoking Status  </label>
+                    <select class="form-select" id="smoking" name="smoking" aria-label="Default select example">
+                        <option selected value="Unknown">  Select Smoking Status (Default : Unknown)  </option>
+                        <option value="never smoked">Never Smoked</option>
+                        <option value="formerly smoked">Formerly Smoked</option>
+                        <option value="smokes">Smokes</option>
+                      </select>
+                  </div>
+
+                  <div class="text-center" >
+                    <button type="submit" class="btn btn-primary">Predict</button>
+                  </div>
+              </form>
+
+        </div><br>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-gray-600 body-font text-center">
+      <div class="container-fluid bg-warning px-5 py-0 mx-auto flex items-center sm:flex-row flex-col">
+        <p class="text-xl text-gray-500 sm:ml-4 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">Aman Singh
+        </p>
+        <p class="text-xl text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">Stroke Risk Prediction @ 2021
+        </p>
+        <p class="text-xl text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+          <a href="https://github.com/Aman-Singh23/Stroke-Risk-Prediction" style="text-decoration: none;" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">GitHub</a>
+        </p>
+        <p class="text-xl text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+          <a href="https://www.linkedin.com/in/aman-singh-1079b3196/" style="text-decoration: none;" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+        </p>
+      </div>
+    </footer>
+
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
